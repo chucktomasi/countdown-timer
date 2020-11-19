@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope, $interval) {
+	/* widget controller */
+	var c = this;
+
+	$interval(function(){ 
+		c.data.timeout--;
+		if (c.data.timeout == 0 ) {
+			console.log('Timer expired');
+		} else {
+			var d = Math.floor(c.data.timeout / (3600*24));
+			var h = Math.floor(c.data.timeout % (3600*24) / 3600);
+			var m = Math.floor(c.data.timeout % 3600 / 60);
+			var s = Math.floor(c.data.timeout % 60);
+
+			c.data.display = {
+				"days"  : d,
+				"hours" : ("00" + h).slice(-2),
+				"minutes" : ("00" + m).slice(-2),
+				"seconds" : ("00" + s).slice(-2)
+			};
+
+		}
+	}, 1000, c.data.timeout);
+	
+	$scope.dateChanged = function() {
+		console.log('date changed=' + c.data.startDate);
+		c.server.update();
+	}
+	$scope.toggleDatePicker = function() {
+		c.data.showContainer = !c.data.showContainer;
+		console.log(c.data.showContainer);
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.main {
+  background-image : url("timer-background.png");
+  height: 720px;
+  width : 1280px;
+}
+
+.container {
+  width : 250px;
+  text-align : left;
+}
+
+.title,.subtitle {
+  font-size : 5em;
+  font-family: Impact;
+}
+
+.subtitle {
+  font-size : 3em;
+}
+
+table {
+  border-spacing : 5px;
+  border-collapse: separate;
+  table-layout : fixed;
+  width : 500px;
+}
+
+.tableContainer {
+  position : absolute;
+  top : 385px;
+  left : 900px;
+}
+
+.card {
+  font-size : 4em;
+  border : thin #404040 solid;
+  border-radius : 10px;
+  text-align : center;
+  padding : 0px 5px 0px 5px;
+  background-color:#aaa;
+  color : black;
+  font-family: Impact;
+}
+
+.unit {
+  color : white;
+  font-size : 2em;
+  text-align : center;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>countdown</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Countdown</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	data.timeout = 0;
+	data.display = {}
+	data.showContainer = false;
+	var targetDateStr = "2020-11-19 7:00:00";
+	var targetDate = new GlideDateTime();
+	targetDate.setDisplayValue(targetDateStr);
+
+	if (input) {
+		targetDateStr = input.startDate;
+		targetDate.setDisplayValue(targetDateStr);
+	}
+
+	var tdNum = targetDate.getNumericValue();
+	data.startDate = targetDateStr;
+	var now = new GlideDateTime();
+	var nowNum = now.getNumericValue();
+
+	if (nowNum < tdNum) {
+		data.timeout = parseInt((tdNum - nowNum) / 1000, 10);
+	}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2020-11-19 20:56:09</sys_created_on>
+        <sys_id>82da1bc61b24a4500e1ba68a234bcbd5</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Countdown</sys_name>
+        <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
+        <sys_update_name>sp_widget_82da1bc61b24a4500e1ba68a234bcbd5</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2020-11-19 20:57:29</sys_updated_on>
+        <template><![CDATA[<div class="main">
+
+  <div class="container" ng-show="c.data.showContainer">
+    <sp-date-picker
+                    field="data.startDate"
+                    ng-model="data.startDate"
+                    sn-include-time="true"
+                    sn-change="dateChanged()">
+    </sp-date-picker>
+  </div>
+  <div class="tableContainer">
+    <div ng-if="c.data.showContainer" ng-click="toggleDatePicker()">
+      <i class="fa fa-caret-up" aria-hidden="true"></i>
+    </div>
+    <div ng-if="!c.data.showContainer" ng-click="toggleDatePicker()">
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+    </div>
+    <center>
+<!--
+      <div class="title">
+        Saturday Night Karaoke
+      </div>
+      <div class="subtitle">
+        6PM PT/9PM ET
+      </div>
+-->
+      <table>
+        <tr>
+          <td class="card">
+            {{c.data.display.days}}
+          </td>
+          <td class="card">
+            {{c.data.display.hours}}
+          </td>
+          <td class="card">
+            {{c.data.display.minutes}}
+          </td>
+          <td class="card">
+            {{c.data.display.seconds}}
+          </td>
+        </tr>
+        <tr>
+          <td class="unit">
+            ${Days}
+          </td>
+          <td class="unit">
+            ${Hours}
+          </td>
+          <td class="unit">
+            ${Min}
+          </td>
+          <td class="unit">
+            ${Sec}
+          </td>
+        </tr>
+      </table>
+    </center>
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>
