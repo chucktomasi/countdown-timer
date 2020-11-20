@@ -1,8 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Page" max_length="40" name="x_orb_timer_page" type="collection">
+    <element label="Page" max_length="40" name="x_orb_timer_page" sizeclass="2" type="collection">
+        <element label="Background color" max_length="40" name="background_color" type="color"/>
+        <element attributes="pdf_cell_type=image" label="Background image" max_length="40" name="background_image" type="user_image"/>
         <element attributes="edge_encryption_enabled=true" label="Date/time" max_length="40" name="date_time" type="glide_date_time"/>
+        <element default="#eee" label="Digit background" max_length="40" name="digit_background" type="color"/>
+        <element default="true" label="Digit border" max_length="40" name="digit_border" type="boolean"/>
+        <element default="black" label="Digit border color" max_length="40" name="digit_border_color" type="color"/>
+        <element attributes="edge_encryption_enabled=true" default="10px" label="Digit border radius" max_length="40" name="digit_border_radius" type="string"/>
+        <element default="black" label="Digit color" max_length="40" name="digit_color" type="color"/>
+        <element attributes="edge_encryption_enabled=true" default="Impact" label="Digit font" max_length="40" name="digit_font" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="2em" label="Digit font size" max_length="40" name="digit_font_size" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Digit style" max_length="40" name="digit_style" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Italic" sequence="0" value="italic"/>
+                <element inactive_on_update="false" label="Bold" sequence="1" value="bold"/>
+            </choice>
+        </element>
+        <element label="Label background" max_length="40" name="label_background" type="color"/>
+        <element default="black" label="Label color" max_length="40" name="label_color" type="color"/>
+        <element default="Impact" label="Label font" max_length="40" name="label_font" type="string"/>
+        <element default="2em" label="Label font size" max_length="40" name="label_font_size" type="string"/>
+        <element choice="1" choice_field="digit_style" choice_table="x_orb_timer_page" label="Label style" max_length="40" name="label_style" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Italic" sequence="0" value="italic"/>
+                <element inactive_on_update="false" label="Bold" sequence="1" value="bold"/>
+            </choice>
+        </element>
         <element attributes="edge_encryption_enabled=true" label="Name" max_length="40" name="name" type="string"/>
-        <element label="X Position" max_length="40" name="x_position" type="integer"/>
-        <element label="Y Position" max_length="40" name="y_position" type="integer"/>
+        <element default="true" label="Show labels" max_length="40" name="show_labels" type="boolean"/>
+        <element default="true" label="Show subtitle" max_length="40" name="show_subtitle" type="boolean"/>
+        <element default="true" label="Show title" max_length="40" name="show_title" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Subtitle" max_length="40" name="subtitle" type="string"/>
+        <element label="Subtitle background" max_length="40" name="subtitle_background" type="color"/>
+        <element default="black" label="Subtitle color" max_length="40" name="subtitle_color" type="color"/>
+        <element attributes="edge_encryption_enabled=true" default="Impact" label="Subtitle font" max_length="40" name="subtitle_font" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="2em" label="Subtitle font size" max_length="40" name="subtitle_font_size" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" choice_field="digit_style" choice_table="x_orb_timer_page" label="Subtitle style" max_length="40" name="subtitle_style" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Italic" sequence="0" value="italic"/>
+                <element inactive_on_update="false" label="Bold" sequence="1" value="bold"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" default="5px" label="Table spacing" max_length="40" name="table_spacing" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="500" label="Table width" max_length="40" name="table_width" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Title" max_length="40" name="title" type="string"/>
+        <element label="Title backround" max_length="40" name="title_backround" type="color"/>
+        <element default="black" label="Title color" max_length="40" name="title_color" type="color"/>
+        <element attributes="edge_encryption_enabled=true" default="Impact" label="Title font" max_length="40" name="title_font" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="5em" label="Title font size" max_length="40" name="title_font_size" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" choice_field="digit_style" choice_table="x_orb_timer_page" label="Title style" max_length="40" name="title_style" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Italic" sequence="0" value="italic"/>
+                <element inactive_on_update="false" label="Bold" sequence="1" value="bold"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" default="1px" label="Digit border width" max_length="40" name="u_string_16" type="string"/>
+        <element default="0" label="X Position" max_length="40" name="x_position" type="integer"/>
+        <element default="0" label="Y Position" max_length="40" name="y_position" type="integer"/>
     </element>
 </database>

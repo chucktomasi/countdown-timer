@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="78dbe09e1b24201055dd106a234bcb5f" sys_domain="global" table="x_orb_timer_page" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 02:49:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>70dbe09e1b24201055dd106a234bcbad</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_orb_timer_page" name="x_orb_timer_page" sys_domain="global" view="Default view">78dbe09e1b24201055dd106a234bcb5f</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 02:49:57</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 02:49:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>30dbe09e1b24201055dd106a234bcbb2</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_orb_timer_page" name="x_orb_timer_page" sys_domain="global" view="Default view">78dbe09e1b24201055dd106a234bcb5f</sys_ui_form>
+            <sys_ui_section caption="Titles" display_value="Titles" name="x_orb_timer_page" sys_domain="global" view="Default view">38dbe09e1b24201055dd106a234bcb5e</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 03:03:19</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 13:52:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>3a734f5a1bac201055dd106a234bcba0</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_orb_timer_page" name="x_orb_timer_page" sys_domain="global" view="Default view">78dbe09e1b24201055dd106a234bcb5f</sys_ui_form>
+            <sys_ui_section caption="Digits" display_value="Digits" name="x_orb_timer_page" sys_domain="global" view="Default view">aa734f5a1bac201055dd106a234bcb56</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 13:52:33</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 13:31:26</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>55aeb6161bac201055dd106a234bcbef</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_orb_timer_page" name="x_orb_timer_page" sys_domain="global" view="Default view">78dbe09e1b24201055dd106a234bcb5f</sys_ui_form>
+            <sys_ui_section caption="Labels" display_value="Labels" name="x_orb_timer_page" sys_domain="global" view="Default view">91ae76161bac201055dd106a234bcb06</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 13:31:26</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_orb_timer_page</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 02:49:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>78dbe09e1b24201055dd106a234bcb5f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_orb_timer_page</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
+            <sys_update_name>sys_ui_form_sections_78dbe09e1b24201055dd106a234bcb5f</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 02:49:57</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

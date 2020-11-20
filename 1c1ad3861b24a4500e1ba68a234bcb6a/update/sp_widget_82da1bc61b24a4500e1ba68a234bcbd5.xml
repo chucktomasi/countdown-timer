@@ -6,84 +6,47 @@
 	var c = this;
 
 	$interval(function(){ 
-		c.data.timeout--;
-		if (c.data.timeout == 0 ) {
+		c.data.display.timeout--;
+		if (c.data.display.timeout == 0 ) {
 			console.log('Timer expired');
 		} else {
-			var d = Math.floor(c.data.timeout / (3600*24));
-			var h = Math.floor(c.data.timeout % (3600*24) / 3600);
-			var m = Math.floor(c.data.timeout % 3600 / 60);
-			var s = Math.floor(c.data.timeout % 60);
-
-			c.data.display = {
-				"days"  : d,
-				"hours" : ("00" + h).slice(-2),
-				"minutes" : ("00" + m).slice(-2),
-				"seconds" : ("00" + s).slice(-2)
+			c.data.label = {
+				"day" : "Day",
+				"hour" : "Hour",
+				"minute" : "Min",
+				"second" : "Sec"
 			};
+			var d = Math.floor(c.data.display.timeout / (3600*24));
+			var h = Math.floor(c.data.display.timeout % (3600*24) / 3600);
+			var m = Math.floor(c.data.display.timeout % 3600 / 60);
+			var s = Math.floor(c.data.display.timeout % 60);
+
+			if (d != 1) {
+				c.data.label.day += 's';
+			}
+
+			if (h != 1) {
+				c.data.label.hour += 's';
+			}
+
+			if (m != 1) {
+				c.data.label.minute += 's';
+			}
+
+			if (s != 1) {
+				c.data.label.second += 's';
+			}
+
+			c.data.display.days = d;
+			c.data.display.hours = ("00" + h).slice(-2);
+			c.data.display.minutes = ("00" + m).slice(-2);
+			c.data.display.seconds = ("00" + s).slice(-2);
 
 		}
-	}, 1000, c.data.timeout);
-	
-	$scope.dateChanged = function() {
-		console.log('date changed=' + c.data.startDate);
-		c.server.update();
-	}
-	$scope.toggleDatePicker = function() {
-		c.data.showContainer = !c.data.showContainer;
-		console.log(c.data.showContainer);
-	}
+	}, 1000, c.data.display.timeout);
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css>.main {
-  background-image : url("timer-background.png");
-  height: 720px;
-  width : 1280px;
-}
-
-.container {
-  width : 250px;
-  text-align : left;
-}
-
-.title,.subtitle {
-  font-size : 5em;
-  font-family: Impact;
-}
-
-.subtitle {
-  font-size : 3em;
-}
-
-table {
-  border-spacing : 5px;
-  border-collapse: separate;
-  table-layout : fixed;
-  width : 500px;
-}
-
-.tableContainer {
-  position : absolute;
-  top : 385px;
-  left : 900px;
-}
-
-.card {
-  font-size : 4em;
-  border : thin #404040 solid;
-  border-radius : 10px;
-  text-align : center;
-  padding : 0px 5px 0px 5px;
-  background-color:#aaa;
-  color : black;
-  font-family: Impact;
-}
-
-.unit {
-  color : white;
-  font-size : 2em;
-  text-align : center;
-}</css>
+        <css/>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -101,25 +64,144 @@ table {
 	/* populate the 'data' object */
 	/* e.g., data.table = $sp.getValue('table'); */
 
-	data.timeout = 0;
-	data.display = {}
-	data.showContainer = false;
-	var targetDateStr = "2020-11-19 7:00:00";
-	var targetDate = new GlideDateTime();
-	targetDate.setDisplayValue(targetDateStr);
+	data.mode = 'list';
+	data.display = {
+		"days" : 0,
+		"hours" : "00",
+		"minutes" : "00",
+		"seconds" : "00",
+		"date" : {
+			"targetDateStr" : "2020-11-21 19:00:00",
+			"targetValue" : 0
+		},
+		"timeout" : 0,
+		"showTitle" : true,
+		"showSubtitle" : true,
+		"showLabels" : true
+	};
+	data.style = {};
 
+	var targetDate = new GlideDateTime();
+
+	var pageID = $sp.getParameter('p') || '';
+	if (pageID != '') {
+
+		data.mode = 'count';
+		var pageGr = new GlideRecord('x_orb_timer_page');
+		if (pageGr.get(pageID)) {
+			data.display.date.targetDateStr = pageGr.date_time.getDisplayValue();
+			/*
+			data.page.x_coord        = ;
+			data.page.y_coord        = ;
+			data.page.color.bg       = pageGr.getValue('background_color');
+			data.page.color.digit    = ;
+			data.page.color.label    = ;
+			data.page.color.digit_bg = pageGr.getValue('digit_background');
+			data.page.url = "#aaa""";
+
+*/
+			data.style.main = {
+				"margin" : "auto"
+			};
+
+			data.style.table = {
+				"width" : pageGr.getValue('table_width'),
+				"border-spacing" : pageGr.getValue('table_spacing'),
+				"table-layout" : "fixed",
+				"border-collapse": "separate"
+			};
+
+			data.style.digit = {
+				"font-size" : pageGr.getValue('digit_font_size'),
+				"border" : "thin #404040 solid",
+				"border-radius" : "10px",
+				"text-align" : "center",
+				"padding" : "0px 5px 0px 5px",
+				"background-color" : pageGr.getValue('digit_background'),
+				"color" : pageGr.getValue('digit_color'),
+				"font-family" : "Impact"
+			};
+
+			data.style.tableDiv = {
+				"position" : "relative",
+				"top" : pageGr.getValue('y_position') + "px",
+				"left" : pageGr.getValue('x_position') + "px"
+			};
+
+			data.display.showLabels = pageGr.getValue('show_labels') == "1";
+
+			if (data.display.showLabels) {
+				data.style.label = {
+					"color" : pageGr.getValue('label_color'),
+					"font-size" : pageGr.getValue('label_font_size'),
+					"background-color" : pageGr.getValue('label_background'),
+					"font-family" : pageGr.getValue('label_font'),
+					"text-align" : "center"
+				};
+				switch (pageGr.getValue('label_style')) {
+					case 'italic':
+						data.style.label["font-style"] = "italic";
+						break;
+
+					case 'bold':
+						data.style.label["font-weight"] = "bold";
+						break;
+				}				
+			}
+
+			data.display.showTitle = pageGr.getValue('show_title') == "1";
+
+			if (data.display.showTitle) {
+				data.display["title"] = pageGr.getValue('title');
+				data.style.title = {
+					"color" : pageGr.getValue('title_color'),
+					"background-color" : pageGr.getValue('title_background'),
+					"font-family" : pageGr.getValue('title_font'),
+					"font-size" : pageGr.getValue('title_font_size')
+				}
+				switch (pageGr.getValue('title_style')) {
+					case 'italic':
+						data.style.title["font-style"] = "italic";
+						break;
+
+					case 'bold':
+						data.style.title["font-weight"] = "bold";
+						break;
+				}				
+			}
+
+			// Now get the image URL
+			var imageGr = new GlideRecord('sys_attachment');
+			imageGr.addQuery('table_name', 'ZZ_YYx_orb_timer_page');
+			imageGr.addQuery('file_name', 'background_image');
+			imageGr.addQuery('table_sys_id', pageGr.getUniqueValue());
+			imageGr.query();
+			console.log('q=' + imageGr.getEncodedQuery());
+			if (imageGr.next()) {
+				data.style.main = {
+					"background-image" : "url('" + imageGr.getUniqueValue() + ".iix')",
+					"height" : imageGr.getValue('image_height'),
+					"width" : imageGr.getValue('image_width')
+				};
+			}
+		} else {
+			gs.addErrorMessage('Cannot load page');
+			return;
+		}
+	}
+	/*
 	if (input) {
 		targetDateStr = input.startDate;
 		targetDate.setDisplayValue(targetDateStr);
 	}
-
+*/
+	targetDate.setDisplayValue(data.display.date.targetDateStr);
 	var tdNum = targetDate.getNumericValue();
-	data.startDate = targetDateStr;
 	var now = new GlideDateTime();
 	var nowNum = now.getNumericValue();
 
 	if (nowNum < tdNum) {
-		data.timeout = parseInt((tdNum - nowNum) / 1000, 10);
+		data.display.timeout = parseInt((tdNum - nowNum) / 1000, 10);
 	}
 
 })();]]></script>
@@ -128,71 +210,67 @@ table {
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2020-11-19 20:56:09</sys_created_on>
         <sys_id>82da1bc61b24a4500e1ba68a234bcbd5</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>54</sys_mod_count>
         <sys_name>Countdown</sys_name>
         <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
         <sys_update_name>sp_widget_82da1bc61b24a4500e1ba68a234bcbd5</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2020-11-19 20:57:29</sys_updated_on>
-        <template><![CDATA[<div class="main">
+        <sys_updated_on>2020-11-20 14:03:54</sys_updated_on>
+        <template><![CDATA[<div ng-style="c.data.style.main">
 
-  <div class="container" ng-show="c.data.showContainer">
-    <sp-date-picker
-                    field="data.startDate"
-                    ng-model="data.startDate"
-                    sn-include-time="true"
-                    sn-change="dateChanged()">
-    </sp-date-picker>
-  </div>
-  <div class="tableContainer">
-    <div ng-if="c.data.showContainer" ng-click="toggleDatePicker()">
-      <i class="fa fa-caret-up" aria-hidden="true"></i>
-    </div>
-    <div ng-if="!c.data.showContainer" ng-click="toggleDatePicker()">
-      <i class="fa fa-caret-down" aria-hidden="true"></i>
-    </div>
-    <center>
-<!--
-      <div class="title">
-        Saturday Night Karaoke
-      </div>
-      <div class="subtitle">
-        6PM PT/9PM ET
-      </div>
+  <!--
+
+<div class="container" ng-show="c.data.showContainer">
+<sp-date-picker
+field="data.startDate"
+ng-model="data.startDate"
+sn-include-time="true"
+sn-change="dateChanged()">
+</sp-date-picker>
+</div>
 -->
-      <table>
-        <tr>
-          <td class="card">
-            {{c.data.display.days}}
-          </td>
-          <td class="card">
-            {{c.data.display.hours}}
-          </td>
-          <td class="card">
-            {{c.data.display.minutes}}
-          </td>
-          <td class="card">
-            {{c.data.display.seconds}}
-          </td>
-        </tr>
-        <tr>
-          <td class="unit">
-            ${Days}
-          </td>
-          <td class="unit">
-            ${Hours}
-          </td>
-          <td class="unit">
-            ${Min}
-          </td>
-          <td class="unit">
-            ${Sec}
-          </td>
-        </tr>
-      </table>
+  <div ng-style="c.data.style.tableDiv">
+    <center>
+      <div ng-style="c.data.style.title" ng-if="data.display.showTitle">
+        {{c.data.display.title}}
+      </div>
+      <div ng-style="c.data.style.subtitle" ng-if="data.display.showSubtitle">
+        {{c.data.display.subtitle}}
+      </div>
     </center>
+
+    <table ng-style="c.data.style.table">
+      <tr>
+        <td ng-style="c.data.style.digit">
+          {{c.data.display.days}}
+        </td>
+        <td ng-style="c.data.style.digit">
+          {{c.data.display.hours}}
+        </td>
+        <td ng-style="c.data.style.digit">
+          {{c.data.display.minutes}}
+        </td>
+        <td ng-style="c.data.style.digit">
+          {{c.data.display.seconds}}
+        </td>
+      </tr>
+      <tr ng-if="c.data.display.showLabels">
+        <td ng-style="c.data.style.label">
+          {{c.data.label.day}}
+        </td>
+        <td ng-style="c.data.style.label">
+          {{c.data.label.hour}}
+        </td>
+        <td ng-style="c.data.style.label">
+          {{c.data.label.minute}}
+        </td>
+        <td ng-style="c.data.style.label">
+          {{c.data.label.second}}
+        </td>
+      </tr>
+    </table>
   </div>
 
 </div>]]></template>

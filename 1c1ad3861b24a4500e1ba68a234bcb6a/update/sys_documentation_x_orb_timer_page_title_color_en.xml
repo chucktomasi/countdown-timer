@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="title_color" label="Title color" language="en" table="x_orb_timer_page">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>title_color</element>
+            <help/>
+            <hint/>
+            <label>Title color</label>
+            <language>en</language>
+            <name>x_orb_timer_page</name>
+            <plural>Title colors</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 03:17:24</sys_created_on>
+            <sys_id>3e12bc161b64201055dd106a234bcb7e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Title color</sys_name>
+            <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
+            <sys_update_name>sys_documentation_x_orb_timer_page_title_color_en</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 03:17:24</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

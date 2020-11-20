@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="title_style" table="x_orb_timer_page" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>title_style</element>
+            <name>x_orb_timer_page</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 13:24:59</sys_created_on>
+            <sys_id>ba2d3e921bac201055dd106a234bcbca</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>title_style</sys_name>
+            <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
+            <sys_update_name>sys_choice_x_orb_timer_page_title_style</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 13:24:59</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>title_style</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Italic</label>
+            <language>en</language>
+            <name>x_orb_timer_page</name>
+            <sequence>0</sequence>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 13:24:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>322d3e921bac201055dd106a234bcbca</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 13:24:59</sys_updated_on>
+            <value>italic</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>title_style</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Bold</label>
+            <language>en</language>
+            <name>x_orb_timer_page</name>
+            <sequence>1</sequence>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 13:24:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>b62d3e921bac201055dd106a234bcbcc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 13:24:59</sys_updated_on>
+            <value>bold</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

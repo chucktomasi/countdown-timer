@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="subtitle_background" label="Subtitle background" language="en" table="x_orb_timer_page">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>subtitle_background</element>
+            <help/>
+            <hint/>
+            <label>Subtitle background</label>
+            <language>en</language>
+            <name>x_orb_timer_page</name>
+            <plural>Subtitle backgrounds</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-11-20 14:01:00</sys_created_on>
+            <sys_id>e6654fda1bac201055dd106a234bcb5b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Subtitle background</sys_name>
+            <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
+            <sys_update_name>sys_documentation_x_orb_timer_page_subtitle_background_en</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-11-20 14:01:00</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
