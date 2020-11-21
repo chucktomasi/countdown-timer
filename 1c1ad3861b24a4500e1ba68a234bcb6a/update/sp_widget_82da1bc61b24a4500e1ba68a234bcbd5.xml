@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function($scope, $interval) {
+        <client_script><![CDATA[api.controller=function($scope, $interval, $window) {
 	/* widget controller */
 	var c = this;
 
@@ -44,9 +44,16 @@
 
 		}
 	}, 1000, c.data.display.timeout);
+	
+	$scope.openPage = function(item) {
+		console.log(JSON.stringify(item, null, 4));
+		$window.location.href = '?id=countdown&p=' + item.id;
+	}
 };]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>.tableList {
+  background-color : white;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -84,36 +91,51 @@
 	var targetDate = new GlideDateTime();
 
 	var pageID = $sp.getParameter('p') || '';
-	if (pageID != '') {
+	if (pageID == '') {
+		data.mode = 'list';
+		data.table = [];
+		var pageListGr = new GlideRecord('x_orb_timer_page');
+		pageListGr.orderBy('name');
+		pageListGr.addEncodedQuery('date_time>javascript:gs.endOfCurrentMinute()');
+		pageListGr.query();
+		
+		while (pageListGr.next()) {
+			var obj = {
+				"name" : pageListGr.getDisplayValue(),
+				"id" : pageListGr.getUniqueValue(),
+				"date" : pageListGr.date_time.getDisplayValue()
+			};
+			
+			data.table.push(obj);
+			
+		}
+	} else {
 
 		data.mode = 'count';
 		var pageGr = new GlideRecord('x_orb_timer_page');
 		if (pageGr.get(pageID)) {
 			data.display.date.targetDateStr = pageGr.date_time.getDisplayValue();
-			/*
-			data.page.x_coord        = ;
-			data.page.y_coord        = ;
-			data.page.color.bg       = pageGr.getValue('background_color');
-			data.page.color.digit    = ;
-			data.page.color.label    = ;
-			data.page.color.digit_bg = pageGr.getValue('digit_background');
-			data.page.url = "#aaa""";
 
-*/
 			data.style.main = {
-				"margin" : "auto"
+				"margin" : "auto",
+				"background-color" : pageGr.getValue('background_color')
 			};
 
+			var tableWidth = parseInt(pageGr.getValue('table_width'), 10);
+			
 			data.style.table = {
-				"width" : pageGr.getValue('table_width'),
+				"width" : tableWidth,
 				"border-spacing" : pageGr.getValue('table_spacing'),
 				"table-layout" : "fixed",
-				"border-collapse": "separate"
+				"border-collapse": "separate",
+				"margin" : "0 auto"
 			};
 
+			var digitBorderWidth = pageGr.getValue('digit_border_width');
+			var digitBorderColor = pageGr.getValue('digit_border_color');
 			data.style.digit = {
 				"font-size" : pageGr.getValue('digit_font_size'),
-				"border" : "thin #404040 solid",
+				"border" : digitBorderWidth + " " + digitBorderColor + " solid",
 				"border-radius" : "10px",
 				"text-align" : "center",
 				"padding" : "0px 5px 0px 5px",
@@ -123,6 +145,9 @@
 			};
 
 			data.style.tableDiv = {
+				"display" : "inline-block",
+				"text-align" : "center",
+				"width" : tableWidth,
 				"position" : "relative",
 				"top" : pageGr.getValue('y_position') + "px",
 				"left" : pageGr.getValue('x_position') + "px"
@@ -170,6 +195,26 @@
 				}				
 			}
 
+			data.display.showSubtitle = pageGr.getValue('show_subtitle') == "1";
+
+			if (data.display.showSubtitle) {
+				data.display["subtitle"] = pageGr.getValue('subtitle');
+				data.style.subtitle = {
+					"color" : pageGr.getValue('subtitle_color'),
+					"background-color" : pageGr.getValue('subtitle_background'),
+					"font-family" : pageGr.getValue('subtitle_font'),
+					"font-size" : pageGr.getValue('subtitle_font_size')
+				}
+				switch (pageGr.getValue('subtitle_style')) {
+					case 'italic':
+						data.style.subtitle["font-style"] = "italic";
+						break;
+
+					case 'bold':
+						data.style.subtitle["font-weight"] = "bold";
+						break;
+				}				
+			}
 			// Now get the image URL
 			var imageGr = new GlideRecord('sys_attachment');
 			imageGr.addQuery('table_name', 'ZZ_YYx_orb_timer_page');
@@ -189,12 +234,7 @@
 			return;
 		}
 	}
-	/*
-	if (input) {
-		targetDateStr = input.startDate;
-		targetDate.setDisplayValue(targetDateStr);
-	}
-*/
+	
 	targetDate.setDisplayValue(data.display.date.targetDateStr);
 	var tdNum = targetDate.getNumericValue();
 	var now = new GlideDateTime();
@@ -210,15 +250,41 @@
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2020-11-19 20:56:09</sys_created_on>
         <sys_id>82da1bc61b24a4500e1ba68a234bcbd5</sys_id>
-        <sys_mod_count>54</sys_mod_count>
+        <sys_mod_count>82</sys_mod_count>
         <sys_name>Countdown</sys_name>
         <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
         <sys_update_name>sp_widget_82da1bc61b24a4500e1ba68a234bcbd5</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2020-11-20 14:03:54</sys_updated_on>
+        <sys_updated_on>2020-11-20 20:30:50</sys_updated_on>
         <template><![CDATA[<div ng-style="c.data.style.main">
+
+  <div class="tableList" ng-if="c.data.mode == 'list'">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            ${Name}
+          </th>
+          <th>
+            ${Date/time}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in c.data.table" ng-click="openPage(row)">
+          <td>
+            {{row.name}}
+          </td>
+          <td>
+            {{row.date}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 
   <!--
 
@@ -231,7 +297,7 @@ sn-change="dateChanged()">
 </sp-date-picker>
 </div>
 -->
-  <div ng-style="c.data.style.tableDiv">
+  <div ng-style="c.data.style.tableDiv" ng-if="c.data.mode == 'count'">
     <center>
       <div ng-style="c.data.style.title" ng-if="data.display.showTitle">
         {{c.data.display.title}}
@@ -241,36 +307,36 @@ sn-change="dateChanged()">
       </div>
     </center>
 
-    <table ng-style="c.data.style.table">
-      <tr>
-        <td ng-style="c.data.style.digit">
+    <section style="display:table;" ng-style="c.data.style.table">
+      <header style="display:table-row;">
+        <div style="display: table-cell;" ng-style="c.data.style.digit">
           {{c.data.display.days}}
-        </td>
-        <td ng-style="c.data.style.digit">
+        </div>
+        <div style="display: table-cell;" ng-style="c.data.style.digit">
           {{c.data.display.hours}}
-        </td>
-        <td ng-style="c.data.style.digit">
+        </div>
+        <div style="display: table-cell;" ng-style="c.data.style.digit">
           {{c.data.display.minutes}}
-        </td>
-        <td ng-style="c.data.style.digit">
+        </div>
+        <div style="display: table-cell;" ng-style="c.data.style.digit">
           {{c.data.display.seconds}}
-        </td>
-      </tr>
-      <tr ng-if="c.data.display.showLabels">
-        <td ng-style="c.data.style.label">
+        </div>
+      </header>
+      <header style="display:table-row;" ng-if="c.data.display.showLabels">
+        <div style="display: table-cell;" ng-style="c.data.style.label">
           {{c.data.label.day}}
-        </td>
-        <td ng-style="c.data.style.label">
+        </div>
+        <div style="display: table-cell;" ng-style="c.data.style.label">
           {{c.data.label.hour}}
-        </td>
-        <td ng-style="c.data.style.label">
+        </div>
+        <div style="display: table-cell;" ng-style="c.data.style.label">
           {{c.data.label.minute}}
-        </td>
-        <td ng-style="c.data.style.label">
+        </div>
+        <div style="display: table-cell;" ng-style="c.data.style.label">
           {{c.data.label.second}}
-        </td>
-      </tr>
-    </table>
+        </div>
+      </header>
+    </section>
   </div>
 
 </div>]]></template>

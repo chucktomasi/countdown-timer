@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Page" max_length="40" name="x_orb_timer_page" sizeclass="2" type="collection">
+    <element label="Page" max_length="40" name="x_orb_timer_page" sizeclass="5" type="collection">
         <element label="Background color" max_length="40" name="background_color" type="color"/>
         <element attributes="pdf_cell_type=image" label="Background image" max_length="40" name="background_image" type="user_image"/>
         <element attributes="edge_encryption_enabled=true" label="Date/time" max_length="40" name="date_time" type="glide_date_time"/>
@@ -16,6 +16,7 @@
                 <element inactive_on_update="false" label="Bold" sequence="1" value="bold"/>
             </choice>
         </element>
+        <element default="1.0" label="Image opacity (0.0 - 1.0)" max_length="40" name="image_opacity" type="float"/>
         <element label="Label background" max_length="40" name="label_background" type="color"/>
         <element default="black" label="Label color" max_length="40" name="label_color" type="color"/>
         <element default="Impact" label="Label font" max_length="40" name="label_font" type="string"/>
