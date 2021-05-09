@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Page" max_length="40" name="x_orb_timer_page" sizeclass="5" type="collection">
+    <element label="Page" max_length="40" name="x_orb_timer_page" sizeclass="8" type="collection">
         <element label="Background color" max_length="40" name="background_color" type="color"/>
         <element attributes="pdf_cell_type=image" label="Background image" max_length="40" name="background_image" type="user_image"/>
         <element attributes="edge_encryption_enabled=true" label="Date/time" max_length="40" name="date_time" type="glide_date_time"/>
@@ -16,6 +16,7 @@
                 <element inactive_on_update="false" label="Bold" sequence="1" value="bold"/>
             </choice>
         </element>
+        <element label="Duration" max_length="40" name="duration" type="glide_duration"/>
         <element default="1.0" label="Image opacity (0.0 - 1.0)" max_length="40" name="image_opacity" type="float"/>
         <element label="Label background" max_length="40" name="label_background" type="color"/>
         <element default="black" label="Label color" max_length="40" name="label_color" type="color"/>
@@ -45,7 +46,7 @@
         <element attributes="edge_encryption_enabled=true" default="5px" label="Table spacing" max_length="40" name="table_spacing" type="string"/>
         <element attributes="edge_encryption_enabled=true" default="500" label="Table width" max_length="40" name="table_width" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Title" max_length="40" name="title" type="string"/>
-        <element label="Title backround" max_length="40" name="title_backround" type="color"/>
+        <element label="Title background" max_length="40" name="title_background" type="color"/>
         <element default="black" label="Title color" max_length="40" name="title_color" type="color"/>
         <element attributes="edge_encryption_enabled=true" default="Impact" label="Title font" max_length="40" name="title_font" type="string"/>
         <element attributes="edge_encryption_enabled=true" default="5em" label="Title font size" max_length="40" name="title_font_size" type="string"/>
@@ -53,6 +54,12 @@
             <choice>
                 <element inactive_on_update="false" label="Italic" sequence="0" value="italic"/>
                 <element inactive_on_update="false" label="Bold" sequence="1" value="bold"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="date" label="Type" max_length="40" name="type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Date" sequence="0" value="date"/>
+                <element inactive_on_update="false" label="Duration" sequence="1" value="duration"/>
             </choice>
         </element>
         <element attributes="edge_encryption_enabled=true" default="1px" label="Digit border width" max_length="40" name="u_string_16" type="string"/>

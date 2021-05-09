@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_choice action="INSERT_OR_UPDATE" field="digit_style" table="x_orb_timer_page" version="3">
+    <sys_choice action="INSERT_OR_UPDATE" field="type" table="x_orb_timer_page" version="3">
         <sys_choice_set action="INSERT_OR_UPDATE">
-            <element>digit_style</element>
+            <element>type</element>
             <name>x_orb_timer_page</name>
             <sys_class_name>sys_choice_set</sys_class_name>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 03:03:22</sys_created_on>
-            <sys_id>95eee4521b64201055dd106a234bcb59</sys_id>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>5ba26bc91b447c109cfaa82b234bcb63</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name>digit_style</sys_name>
+            <sys_name>type</sys_name>
             <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
             <sys_policy/>
             <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
-            <sys_update_name>sys_choice_x_orb_timer_page_digit_style</sys_update_name>
+            <sys_update_name>sys_choice_x_orb_timer_page_type</sys_update_name>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 03:03:22</sys_updated_on>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
         </sys_choice_set>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
-            <element>digit_style</element>
+            <element>type</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Italic</label>
+            <label>Date</label>
             <language>en</language>
             <name>x_orb_timer_page</name>
             <sequence>0</sequence>
             <synonyms/>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 03:03:22</sys_created_on>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>0deee4521b64201055dd106a234bcb58</sys_id>
+            <sys_id>1ba26bc91b447c109cfaa82b234bcb56</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 03:03:22</sys_updated_on>
-            <value>italic</value>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
+            <value>date</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value/>
-            <element>digit_style</element>
+            <element>type</element>
             <hint/>
             <inactive>false</inactive>
-            <label>Bold</label>
+            <label>Duration</label>
             <language>en</language>
             <name>x_orb_timer_page</name>
             <sequence>1</sequence>
             <synonyms/>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 03:03:22</sys_created_on>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>95eee4521b64201055dd106a234bcb5b</sys_id>
+            <sys_id>17a26bc91b447c109cfaa82b234bcb65</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 03:03:22</sys_updated_on>
-            <value>bold</value>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
+            <value>duration</value>
         </sys_choice>
     </sys_choice>
 </record_update>

@@ -4,97 +4,125 @@
             <element>name</element>
             <position>0</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 20:29:08</sys_created_on>
-            <sys_id>4c4e5c261b24601055dd106a234bcb67</sys_id>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>57a26bc91b447c109cfaa82b234bcb7d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 20:29:08</sys_updated_on>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>x_position</element>
+            <element>type</element>
             <position>1</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 20:29:08</sys_created_on>
-            <sys_id>c04e5c261b24601055dd106a234bcb68</sys_id>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>13a26bc91b447c109cfaa82b234bcb7e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 20:29:08</sys_updated_on>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>y_position</element>
+            <element>date_time</element>
             <position>2</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 20:29:08</sys_created_on>
-            <sys_id>484e5c261b24601055dd106a234bcb68</sys_id>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>97a26bc91b447c109cfaa82b234bcb7e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 20:29:08</sys_updated_on>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>duration</element>
+            <position>3</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>1fa26bc91b447c109cfaa82b234bcb7e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>3</position>
+            <position>4</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 20:29:08</sys_created_on>
-            <sys_id>cc4e5c261b24601055dd106a234bcb68</sys_id>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>93a26bc91b447c109cfaa82b234bcb7f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 20:29:08</sys_updated_on>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>date_time</element>
-            <position>4</position>
+            <element>x_position</element>
+            <position>5</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 20:29:08</sys_created_on>
-            <sys_id>444e5c261b24601055dd106a234bcb69</sys_id>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>1ba26bc91b447c109cfaa82b234bcb7f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 20:29:08</sys_updated_on>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>y_position</element>
+            <position>6</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>9fa26bc91b447c109cfaa82b234bcb7f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>background_color</element>
-            <position>5</position>
+            <position>7</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 20:29:08</sys_created_on>
-            <sys_id>c84e5c261b24601055dd106a234bcb69</sys_id>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>17a26bc91b447c109cfaa82b234bcb80</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 20:29:08</sys_updated_on>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>background_image</element>
-            <position>6</position>
+            <position>8</position>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2020-11-20 20:29:08</sys_created_on>
-            <sys_id>404e5c261b24601055dd106a234bcb6a</sys_id>
+            <sys_created_on>2021-05-09 18:36:12</sys_created_on>
+            <sys_id>9ba26bc91b447c109cfaa82b234bcb80</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_orb_timer_page" sys_domain="global" view="Default view">b4ca2f4a1b64a4500e1ba68a234bcb50</sys_ui_section>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2020-11-20 20:29:08</sys_updated_on>
+            <sys_updated_on>2021-05-09 18:36:12</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

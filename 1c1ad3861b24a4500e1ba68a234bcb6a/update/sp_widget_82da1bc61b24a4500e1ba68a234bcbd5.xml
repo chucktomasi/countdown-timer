@@ -98,23 +98,30 @@
 		pageListGr.orderBy('name');
 		pageListGr.addEncodedQuery('date_time>javascript:gs.endOfCurrentMinute()');
 		pageListGr.query();
-		
+
 		while (pageListGr.next()) {
 			var obj = {
 				"name" : pageListGr.getDisplayValue(),
 				"id" : pageListGr.getUniqueValue(),
 				"date" : pageListGr.date_time.getDisplayValue()
 			};
-			
+
 			data.table.push(obj);
-			
+
 		}
 	} else {
 
 		data.mode = 'count';
 		var pageGr = new GlideRecord('x_orb_timer_page');
 		if (pageGr.get(pageID)) {
-			data.display.date.targetDateStr = pageGr.date_time.getDisplayValue();
+			var cType = pageGr.getValue('type');
+			if (cType == 'date') {			
+				data.display.date.targetDateStr = pageGr.date_time.getDisplayValue();
+			} else {
+				data.display.date.targetDateStr = pageGr.getValue('duration');
+			}
+
+			console.log('SS: date=' + data.display.date.targetDateStr);
 
 			data.style.main = {
 				"margin" : "auto",
@@ -122,7 +129,7 @@
 			};
 
 			var tableWidth = parseInt(pageGr.getValue('table_width'), 10);
-			
+
 			data.style.table = {
 				"width" : tableWidth,
 				"border-spacing" : pageGr.getValue('table_spacing'),
@@ -229,20 +236,28 @@
 					"width" : imageGr.getValue('image_width')
 				};
 			}
+			if (cType == 'date') {
+
+				targetDate.setDisplayValue(data.display.date.targetDateStr);
+				var tdNum = targetDate.getNumericValue();
+				var now = new GlideDateTime();
+				var nowNum = now.getNumericValue();
+
+				if (nowNum < tdNum) {
+					data.display.timeout = parseInt((tdNum - nowNum) / 1000, 10);
+				}
+			} else {
+				var gdt = new GlideDateTime();
+				gdt.setValue(data.display.date.targetDateStr);
+				data.display.timeout = parseInt(gdt.getNumericValue(), 10) / 1000;
+			}
+
 		} else {
 			gs.addErrorMessage('Cannot load page');
 			return;
 		}
 	}
-	
-	targetDate.setDisplayValue(data.display.date.targetDateStr);
-	var tdNum = targetDate.getNumericValue();
-	var now = new GlideDateTime();
-	var nowNum = now.getNumericValue();
 
-	if (nowNum < tdNum) {
-		data.display.timeout = parseInt((tdNum - nowNum) / 1000, 10);
-	}
 
 })();]]></script>
         <servicenow>false</servicenow>
@@ -250,14 +265,14 @@
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2020-11-19 20:56:09</sys_created_on>
         <sys_id>82da1bc61b24a4500e1ba68a234bcbd5</sys_id>
-        <sys_mod_count>82</sys_mod_count>
+        <sys_mod_count>87</sys_mod_count>
         <sys_name>Countdown</sys_name>
         <sys_package display_value="Countdown Timer" source="x_orb_timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Countdown Timer">1c1ad3861b24a4500e1ba68a234bcb6a</sys_scope>
         <sys_update_name>sp_widget_82da1bc61b24a4500e1ba68a234bcbd5</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2020-11-20 20:30:50</sys_updated_on>
+        <sys_updated_on>2021-05-09 18:54:29</sys_updated_on>
         <template><![CDATA[<div ng-style="c.data.style.main">
 
   <div class="tableList" ng-if="c.data.mode == 'list'">
